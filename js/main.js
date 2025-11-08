@@ -1,6 +1,9 @@
-// Add any JavaScript functionality here
+// Add header scroll effect and smooth scrolling
 document.addEventListener('DOMContentLoaded', function() {
-    // Example: Smooth scrolling for navigation links
+    const header = document.querySelector('header');
+    const scrollThreshold = 100;
+
+    // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -8,5 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
         });
+    });
+
+    // Add scroll effect for header
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
 });

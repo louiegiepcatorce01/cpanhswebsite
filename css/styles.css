@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #006400;    /* Dark green */
+    --secondary-color: #FFD700;  /* Yellow */
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --hover-color: #008000;      /* Lighter green for hover effects */
+}
+
 /* Reset default styles */
 * {
     margin: 0;
@@ -12,7 +20,49 @@ body {
 
 /* Header and Navigation */
 header {
-    background-color: #333;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.school-logo {
+    width: 50px;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #006400;  /* Dark green */
     color: white;
     padding: 1rem;
 }
@@ -68,7 +118,7 @@ section {
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #006400;  /* Dark green */
     color: white;
     text-align: center;
     padding: 1rem;
