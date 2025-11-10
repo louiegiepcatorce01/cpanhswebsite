@@ -1,0 +1,61 @@
+.updates-container {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.school-updates {
+    flex: 1;
+    min-width: 0;
+}
+
+.fb-updates {
+    width: 500px;
+    flex-shrink: 0;
+}
+
+.update-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.update-card img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.update-content {
+    padding: 20px;
+}
+
+.update-content h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.update-date {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.update-body {
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .updates-container {
+        flex-direction: column;
+    }
+    
+    .fb-updates {
+        width: 100%;
+    }
+}

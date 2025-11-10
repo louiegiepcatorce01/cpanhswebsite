@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CPANHS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/tinymce/tinymce.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <h2>CPANHS Admin</h2>
+            </div>
+            <nav class="dashboard-nav">
+                <ul>
+                    <li><a href="#" class="active" data-section="overview">Overview</a></li>
+                    <li><a href="#" data-section="updates">Manage Updates</a></li>
+                    <li><a href="#" data-section="events">Manage Events</a></li>
+                    <li><a href="#" data-section="content">Edit Content</a></li>
+                    <li><a href="#" data-section="images">Image Gallery</a></li>
+                    <li><a href="#" data-section="settings">Settings</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <h1>Dashboard</h1>
+                <div class="admin-info">
+                    <span id="adminName">Admin</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Sections -->
+            <div class="dashboard-content">
+                <!-- Overview Section -->
+                <section id="overview" class="dashboard-section active">
+                    <h2>Overview</h2>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <h3>Updates</h3>
+                            <p>5 posts</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Events</h3>
+                            <p>3 upcoming</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Messages</h3>
+                            <p>2 new</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Updates Section -->
+                <section id="updates" class="dashboard-section">
+                    <h2>Manage Updates</h2>
+                    <button class="action-button" id="newUpdateBtn">Add New Update</button>
+                    <div class="content-list">
+                        <div class="content-item">
+                            <h3>School Year 2025-2026 Opening</h3>
+                            <p>Posted on: November 10, 2025</p>
+                            <div class="item-actions">
+                                <button class="edit-btn">Edit</button>
+                                <button class="delete-btn">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Events Section -->
+                <section id="events" class="dashboard-section">
+                    <h2>Manage Events</h2>
+                    <button class="action-button" id="newEventBtn">Add New Event</button>
+                    <div class="content-list">
+                        <div class="content-item">
+                            <h3>Foundation Day 2025</h3>
+                            <p>Date: December 1, 2025</p>
+                            <div class="item-actions">
+                                <button class="edit-btn">Edit</button>
+                                <button class="delete-btn">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content Section -->
+                <section id="content" class="dashboard-section">
+                    <h2>Edit Content</h2>
+                    <div class="page-selector">
+                        <select id="pageSelect">
+                            <option value="">Select a page...</option>
+                            <option value="home">Home Page</option>
+                            <option value="about">About Page</option>
+                            <option value="academics">Academics Page</option>
+                            <option value="contact">Contact Page</option>
+                        </select>
+                        <button class="action-button" id="editPageBtn">Edit Selected Page</button>
+                    </div>
+                </section>
+
+                <!-- Image Gallery Section -->
+                <section id="images" class="dashboard-section">
+                    <h2>Image Gallery</h2>
+                    <div class="upload-section">
+                        <form id="imageUploadForm" class="upload-form">
+                            <div class="form-group">
+                                <label for="imageTitle">Image Title</label>
+                                <input type="text" id="imageTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="imageFile">Select Image</label>
+                                <input type="file" id="imageFile" accept="image/*" required>
+                            </div>
+                            <div class="image-preview" id="imagePreview"></div>
+                            <button type="submit" class="action-button">Upload Image</button>
+                        </form>
+                    </div>
+                    <div class="gallery-grid" id="imageGallery">
+                        <!-- Images will be loaded here dynamically -->
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="dashboard-section">
+                    <h2>Settings</h2>
+                    <form id="settingsForm" class="settings-form">
+                        <div class="form-group">
+                            <label for="adminUsername">Change Username</label>
+                            <input type="text" id="adminUsername" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">Change Password</label>
+                            <input type="password" id="adminPassword" name="password">
+                        </div>
+                        <button type="submit" class="action-button">Save Changes</button>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for adding/editing content -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Add New Content</h2>
+            <form id="contentForm">
+                <div class="form-group">
+                    <label for="contentTitle">Title</label>
+                    <input type="text" id="contentTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="contentBody">Content</label>
+                    <textarea id="contentBody" class="rich-text-editor" rows="6"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contentDate">Date</label>
+                    <input type="date" id="contentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="contentImage">Featured Image</label>
+                    <input type="file" id="contentImage" accept="image/*">
+                    <div class="image-preview" id="contentImagePreview"></div>
+                </div>
+                <button type="submit" class="action-button">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/cms.js"></script>
+    <script src="js/image-manager.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
